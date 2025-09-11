@@ -4,7 +4,7 @@ import fs from 'fs/promises';
 import path from 'path';
 import { fileURLToPath } from 'url';
 // Добавьте в конец emailProcessor.js
-import { processFiles as processDownloadedFiles } from './src/fileProcessor';
+import { processFiles as processDownloadedFiles } from './src/fileProcessor.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -235,22 +235,29 @@ class EmailProcessor {
   }
 
   async saveAttachment(attachment, folderPath) {
-    const filePath = path.join(folderPath, attachment.filename);
-    
+  const filePath = path.join(folderPath, attachment.filename);
+  
+  try {
+    // Проверяем, существует ли файл
+    await fs.access(filePath);
+    console.log(`File already exists, skipping: ${filePath}`);
+  } catch (error) {
+    // Файл не существует, сохраняем
     try {
-      // Проверяем, существует ли файл
-      await fs.access(filePath);
-      console.log(`File already exists, skipping: ${filePath}`);
-    } catch (error) {
-      // Файл не существует, сохраняем
+      await fs.writeFile(filePath, attachment.content);
+      console.log(`Saved attachment: ${filePath}`);
+      
+      // После сохранения файла запускаем его обработку
       try {
-        await fs.writeFile(filePath, attachment.content);
-        console.log(`Saved attachment: ${filePath}`);
-      } catch (writeError) {
-        console.error(`Error saving attachment ${filePath}:`, writeError);
+        await processDownloadedFiles();
+      } catch (processingError) {
+        console.error('Error processing files:', processingError);
       }
+    } catch (writeError) {
+      console.error(`Error saving attachment ${filePath}:`, writeError);
     }
   }
+}
 
   connect() {
     this.imap.connect();

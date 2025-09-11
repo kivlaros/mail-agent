@@ -33,13 +33,13 @@ const config = {
 // Функции-заглушки для обработки данных (замените на свою логику)
 async function processAs61Data(data) {
   console.log('Обработка данных as61');
-  // Ваша логика обработки для as61
+  //console.log(data)
   return data;
 }
 
 async function processStpartsData(data) {
   console.log('Обработка данных stparts');
-  // Ваша логика обработки для stparts
+  console.log(data)
   return data;
 }
 
