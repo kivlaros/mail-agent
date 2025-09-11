@@ -4,6 +4,8 @@ import path from 'path';
 import xlsx from 'xlsx';
 import { fileURLToPath } from 'url';
 import { stparts } from './processors/stparts.js';
+import { as } from './processors/as.js';
+import { autoRUS } from './processors/autorus.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -34,7 +36,7 @@ const config = {
 // Функции-заглушки для обработки данных (замените на свою логику)
 async function processAs61Data(data) {
   console.log('Обработка данных as61');
-  const reslt = stparts(data)
+  const reslt = as(data)
   return reslt;
 }
 
@@ -46,8 +48,8 @@ async function processStpartsData(data) {
 
 async function processAutorusData(data) {
   console.log('Обработка данных autorus');
-  // Ваша логика обработки для autorus
-  return data;
+  const reslt = autoRUS(data)
+  return reslt;
 }
 
 class FileProcessor {

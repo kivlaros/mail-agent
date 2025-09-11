@@ -25,7 +25,7 @@ const settings = {
   suppliers: {
     as61: {
       domains: ['as61.ru'],
-      attachmentPrefix: 'Реализация товаров и услуг',
+      attachmentPrefix: '_Документ1',
       folder: './attachments/as61'
     },
     stparts: {
