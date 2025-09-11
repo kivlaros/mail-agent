@@ -3,6 +3,7 @@ import fs from 'fs/promises';
 import path from 'path';
 import xlsx from 'xlsx';
 import { fileURLToPath } from 'url';
+import { stparts } from './processors/stparts.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -33,14 +34,14 @@ const config = {
 // Функции-заглушки для обработки данных (замените на свою логику)
 async function processAs61Data(data) {
   console.log('Обработка данных as61');
-  //console.log(data)
-  return data;
+  const reslt = stparts(data)
+  return reslt;
 }
 
 async function processStpartsData(data) {
   console.log('Обработка данных stparts');
-  console.log(data)
-  return data;
+  const reslt = stparts(data)
+  return reslt;
 }
 
 async function processAutorusData(data) {
@@ -152,7 +153,7 @@ class FileProcessor {
       const workbook = xlsx.read(fileBuffer, { type: 'buffer' });
       const firstSheetName = workbook.SheetNames[0];
       const worksheet = workbook.Sheets[firstSheetName];
-      const data = xlsx.utils.sheet_to_json(worksheet, { header: 1 });
+      const data = xlsx.utils.sheet_to_json(worksheet, { header: 'A' });
       
       // Обрабатываем данные с помощью соответствующей функции
       const processedData = await supplier.processor(data);
