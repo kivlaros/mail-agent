@@ -37,7 +37,18 @@ const settings = {
       domains: ['autorus.ru'],
       attachmentPrefix: 'УПД',
       folder: './attachments/autorus'
+    },
+    autoEuro: {
+      domains: ['autoeuro.ru'],
+      attachmentPrefix: 'УПД',
+      folder: './attachments/autoEuro'
+    },
+    mparts: {
+      domains: ['v01.ru'],
+      attachmentPrefix: 'УПД',
+      folder: './attachments/MParts'
     }
+
   }
 };
 

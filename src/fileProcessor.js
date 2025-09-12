@@ -6,6 +6,8 @@ import { fileURLToPath } from 'url';
 import { stparts } from './processors/stparts.js';
 import { as } from './processors/as.js';
 import { autoRUS } from './processors/autorus.js';
+import { autoEuro } from './processors/auto-euro.js';
+import { Mparts } from './processors/mparts.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -29,6 +31,16 @@ const config = {
       input: './attachments/autorus',
       output: './output/autorus',
       processor: processAutorusData // Функция обработки для autorus
+    },
+    autoEuro: {
+    input: './attachments/autoEuro',
+      output: './output/autoEuro',
+      processor: processAutoEuroData // Функция обработки для autorus
+    },
+     mparts: {
+    input: './attachments/MParts',
+      output: './output/MParts',
+      processor: processMPartsData // Функция обработки для autorus
     }
   }
 };
@@ -49,6 +61,19 @@ async function processStpartsData(data) {
 async function processAutorusData(data) {
   console.log('Обработка данных autorus');
   const reslt = autoRUS(data)
+  return reslt;
+}
+
+async function processAutoEuroData(data) {
+  console.log('Обработка данных autorus');
+  const reslt = autoEuro(data)
+  return reslt;
+}
+
+async function processMPartsData(data) {
+  console.log('Обработка данных autorus');
+  console.log(data)
+  const reslt = Mparts(data)
   return reslt;
 }
 
