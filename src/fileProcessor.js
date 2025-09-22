@@ -8,6 +8,7 @@ import { as } from './processors/as.js';
 import { autoRUS } from './processors/autorus.js';
 import { autoEuro } from './processors/auto-euro.js';
 import { Mparts } from './processors/mparts.js';
+import { forumP } from './processors/forum.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -41,7 +42,12 @@ const config = {
     input: './attachments/MParts',
       output: './output/MParts',
       processor: processMPartsData // Функция обработки для autorus
-    }
+    },
+     forum: {
+    input: './attachments/Forum',
+      output: './output/Forum',
+      processor: processForum // Функция обработки для autorus
+    },
   }
 };
 
@@ -72,8 +78,14 @@ async function processAutoEuroData(data) {
 
 async function processMPartsData(data) {
   console.log('Обработка данных autorus');
-  console.log(data)
   const reslt = Mparts(data)
+  return reslt;
+}
+
+async function processForum(data) {
+  console.log('Обработка данных autorus');
+  console.log(data)
+  const reslt = forumP(data)
   return reslt;
 }
 

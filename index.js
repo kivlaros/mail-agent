@@ -47,6 +47,11 @@ const settings = {
       domains: ['v01.ru'],
       attachmentPrefix: 'УПД',
       folder: './attachments/MParts'
+    },
+    forum: {
+      domains: ['forum-auto.ru'],
+      attachmentPrefix: 'upd',
+      folder: './attachments/Forum'
     }
 
   }
