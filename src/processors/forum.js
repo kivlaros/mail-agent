@@ -1,6 +1,6 @@
 export function forumP(data) {
   const result = data
-    .filter((item) => item.X === "20%") // Фильтруем объекты с AZ = '20%'
+    .filter((item) => item.X === "22%") // Фильтруем объекты с AZ = '20%'
     .map((item) => {
       const B = deletSumbolsFromString(item.B.toString());
       const O = Number(item.O); // Преобразуем в число

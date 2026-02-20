@@ -1,6 +1,6 @@
 export function stparts(data) {
   const result = data
-    .filter((item) => item.AZ === "20%") // Фильтруем объекты с AZ = '20%'
+    .filter((item) => item.AZ === "22%") // Фильтруем объекты с AZ = '20%'
     .map((item) => {
       const B = deletSumbolsFromString(item.B.toString());
       const AA = Number(item.AA); // Преобразуем в число

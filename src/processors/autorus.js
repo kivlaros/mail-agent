@@ -1,6 +1,6 @@
 export function autoRUS(data) {
   const result = data
-    .filter((item) => item.AV === "20%") // Фильтруем объекты с AZ = '20%'
+    .filter((item) => item.AV === "22%") // Фильтруем объекты с AZ = '20%'
     .map((item) => {
       const B = deletSumbolsFromString(item.B.toString());
       const AA = Number(item.AA); // Преобразуем в число

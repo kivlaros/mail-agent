@@ -1,6 +1,6 @@
 export function autoEuro(data) {
   const result = data
-    .filter((item) => item.BD === "20%") // Фильтруем объекты с AZ = '20%'
+    .filter((item) => item.BD === "22%") // Фильтруем объекты с AZ = '20%'
     .map((item) => {
       const B = deletSumbolsFromString(item.B.toString());
       const AF = Number(item.AF); // Преобразуем в число

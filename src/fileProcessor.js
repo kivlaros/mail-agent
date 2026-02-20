@@ -53,6 +53,8 @@ const config = {
 
 // Функции-заглушки для обработки данных (замените на свою логику)
 async function processAs61Data(data) {
+  console.log('STAAAAARTTTTTT!!!!!!!!!!!!')
+  console.log(data)
   console.log('Обработка данных as61');
   const reslt = as(data)
   return reslt;
@@ -158,7 +160,7 @@ class FileProcessor {
         
         // Пропускаем уже обработанные файлы
         if (this.processedFiles.has(fileKey)) {
-          console.log(`Файл уже обработан, пропускаем: ${file}`);
+          //console.log(`Файл уже обработан, пропускаем: ${file}`);
           continue;
         }
         

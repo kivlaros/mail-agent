@@ -1,10 +1,10 @@
 export function as(data) {
   const result = data
-    .filter((item) => item.AL === "20%") // Фильтруем объекты с AZ = '20%'
+    .filter((item) => item.AM === "22%") // Фильтруем объекты с AZ = '20%'
     .map((item) => {
       const D = deletSumbolsFromString(item.D.toString());
-      const X = Number(item.X); // Преобразуем в число
-      const AR = Number(item.AR); // Преобразуем в число
+      const X = Number(item.Y); // Преобразуем в число
+      const AR = Number(item.AS); // Преобразуем в число
       const ratio = AR / X; // Вычисляем соотношение
 
       return [D, X, AR, AR, ratio]; // Формируем массив
