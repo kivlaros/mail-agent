@@ -1,13 +1,14 @@
 export function stparts(data) {
+  console.log(data)
   const result = data
-    .filter((item) => item.AZ === "22%") // Фильтруем объекты с AZ = '20%'
+    .filter((item) => item.BB === "22%") // Фильтруем объекты с AZ = '20%'
     .map((item) => {
       const B = deletSumbolsFromString(item.B.toString());
-      const AA = Number(item.AA); // Преобразуем в число
-      const BF = Number(item.BF); // Преобразуем в число
-      const ratio = BF / AA; // Вычисляем соотношение
+      const AC = Number(item.AC); // Преобразуем в число
+      const BH = Number(item.BH); // Преобразуем в число
+      const ratio = BH / AC; // Вычисляем соотношение
 
-      return [B, AA, BF, BF, ratio]; // Формируем массив
+      return [B, AC, BH, BH, ratio]; // Формируем массив
     });
   return result;
 }
