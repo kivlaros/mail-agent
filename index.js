@@ -3,6 +3,7 @@ import { simpleParser } from 'mailparser';
 import fs from 'fs/promises';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { copyOutputFolder } from './src/utils/copy.js';
 // Добавьте в конец emailProcessor.js
 import { processFiles as processDownloadedFiles } from './src/fileProcessor.js';
 
@@ -273,6 +274,7 @@ class EmailProcessor {
       console.error(`Error saving attachment ${filePath}:`, writeError);
     }
   }
+  await copyOutputFolder()
 }
 
   connect() {
